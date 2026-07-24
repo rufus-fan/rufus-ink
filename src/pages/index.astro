@@ -1,48 +1,27 @@
 ---
-import { Image } from 'astro:assets'
-
 import { Quote } from 'astro-pure/advanced'
 import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
-import { Button, Card, Icon, Label } from 'astro-pure/user'
+import { Button, Icon, Label, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import ProjectCard from '@/components/home/ProjectCard.astro'
 import Section from '@/components/home/Section.astro'
-import SkillLayout from '@/components/home/SkillLayout.astro'
 import config from '@/site-config'
-
-const languages = ['Html', 'JavaScript', 'CSS', 'Python']
-const aitools = ['Codex', 'Claude', 'Trae', 'Hermes']
-const design = ['Axure', 'Figma']
 
 const MAX_POSTS = 10
 const allPosts = await getBlogCollection()
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
-
-const imagePath = config.logo.src
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/*.{jpeg,jpg,png,gif,avif,webp}'
-)
-if (!images[imagePath])
-  throw new Error(
-    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,avif,webp}"`
-  )
 ---
 
 <PageLayout meta={{ title: 'Home' }} highlightColor='#659EB9'>
   <main class='flex w-full flex-col items-center'>
-    <section class='animate mb-10 flex flex-col items-center gap-y-7' id='content-header'>
-      <Image
-        src={images[imagePath]()}
-        alt={config.logo.alt || 'Profile'}
-        class='h-28 w-auto rounded-full border p-1'
-        loading='eager'
-        fetchpriority='high'
-      />
-
-      <div class='flex flex-col items-center gap-y-4'>
-        <h1 class='text-3xl font-medium'>{config.author}</h1>
-        <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
+    <section
+      class='animate mb-10 mt-18 flex w-full flex-col items-start gap-y-7'
+      id='content-header'
+    >
+      <div class='flex w-full flex-col items-start gap-y-4'>
+        <h1 class='text-4xl font-medium md:text-5xl'>{config.author}</h1>
+        <div class='flex flex-wrap justify-start gap-x-7 gap-y-3'>
           <Label title='中国｜杭州'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
@@ -58,15 +37,138 @@ if (!images[imagePath])
       </div>
     </section>
 
-    <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
+    <div id='content' class='animate flex w-full flex-col gap-y-10'>
       <Section title='关于我'>
-        <p class='text-muted-foreground'>产品经理 / 用户增长</p>
+        <p class='text-muted-foreground'>产品经理 ｜ 用户增长</p>
         <p class='text-muted-foreground'>
           擅长用最小成本验证想法，找到真正的市场需求，再把业务规模化。
-            - 这个
         </p>
+      </Section>
 
+      <Section title='职业经历'>
+        <div class='prose max-w-none'>
+          <Timeline
+            class='about-timeline'
+            events={[
+              {
+                date: '2025～至今',
+                content: `<p>本地生活 &amp; 使用AI构筑产品</p>
+                            <ul>
+                              <li>为 500 家药房提供代运营支持；</li>
+                              <li>沉浸于 Vibe Coding，一人即一个完整的 Team，为自己制作产品，也为公司使用 AI 进行业务提效：
+                                <ul>
+                                  <li><a href="https://dashboard.arminos.cn" target="_blank">XianyuFlip</a> — 帮助闲鱼卖家 24 小时自动销售</li>
+                                  <li><a href="https://yuanqihupo.com/" target="_blank">元气琥珀用户中心</a> — 专业的用户健康管理 &amp; 营销中心</li>
+                                </ul>
+                              </li>
+                            </ul>`
+              },
+              {
+                date: '2022～2024',
+                content: `<p>本地生活业务负责人</p>
+                            <ul>
+                              <li>负责神犬外卖业务（淘宝闪购头部服务商），社群用户规模峰值超 200 万人，月订单破百万；</li>
+                              <li>拿下淘宝闪购上海、宁波两座核心城市独家招商权限。</li>
+                            </ul>`
+              },
+              {
+                date: '2021～2022',
+                content: `<p>跨境电商产品经理</p>
+                            <ul>
+                              <li>设计并上线商品中心，实现图片智能翻译且支持译后编辑，自动分发到各语种销售平台，上品人效提高 8 倍；</li>
+                              <li>从 0-1 独立完成电商独立站搭建，快速验证东南亚电商业务模式，单站点月 UV 25w。</li>
+                            </ul>`
+              },
+              {
+                date: '2019～2021',
+                content: `<p>社交电商产品经理</p>
+                            <ul>
+                              <li>从零构建社交分期电商平台，零研发验证 MVP 月销 ¥500 万+，上线首季度过亿 GMV。</li>
+                            </ul>`
+              },
+              {
+                date: '2018～2019',
+                content: `<p>流利说用增小组</p>
+                            <ul>
+                              <li>最早做朋友圈打卡分享的团队，累计转发量破亿次（19 年 5 月微信下场限制朋友圈打卡病毒营销）。</li>
+                            </ul>`
+              }
+            ]}
+          />
+        </div>
+        <style is:global>
+          .about-timeline samp {
+            text-align: left;
+            line-height: 1.8;
+          }
+          @media (min-width: 640px) {
+            .about-timeline samp {
+              width: 7rem;
+              min-width: 7rem;
+            }
+          }
+          /* add breathing room between timeline events */
+          .about-timeline > ul > li {
+            padding-bottom: 1.25rem;
+          }
+          .about-timeline > ul > li:last-child {
+            padding-bottom: 0;
+          }
+          .about-timeline p {
+            margin: 0 0 0.375rem;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+          }
+          .about-timeline ul {
+            margin: 0.375rem 0 0;
+            padding-inline-start: 1.25rem;
+            list-style: disc;
+            font-size: 0.9375rem;
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+          }
+          .about-timeline ul ul {
+            margin-top: 0.375rem;
+          }
+          .about-timeline li {
+            margin-block: 0.375rem;
+          }
+        </style>
         <Button title='查看完整经历' class='w-fit self-end' href='/about' variant='ahead' />
+      </Section>
+            <Section title='项目与作品'>
+        <div class='grid grid-cols-1 gap-3 sm:grid-cols-2'>
+          <ProjectCard
+            href='https://dashboard.arminos.cn/'
+            heading='XianyuFlip'
+            subheading='专为闲鱼平台打造的AI值守解决方案'
+            imagePath='/src/assets/projects/1.avif'
+            tags={['独立开发', 'Web App']}
+          />
+          <ProjectCard
+            href='https://www.biyingniao.com/'
+            heading='神犬外卖'
+            subheading='淘宝闪购头部服务商'
+            imagePath='/src/assets/projects/2.avif'
+            tags={['业务负责人', '本地生活']}
+          />
+          <ProjectCard
+            href='https://yuanqihupo.com/'
+            heading='元气琥珀用户中心'
+            subheading='统一问卷设计、投放、回收、与用户精细化运营的一体化管理后台'
+            imagePath='/src/assets/projects/3.avif'
+            tags={['独立开发', '大健康・Web App']}
+          />
+          <ProjectCard
+            href='/projects'
+            heading='更多项目'
+            subheading=''
+            imagePath='/src/assets/projects/4.avif'
+          />
+        </div>
       </Section>
       {
         allPostsByDate.length > 0 && (
@@ -82,40 +184,6 @@ if (!images[imagePath])
           </Section>
         )
       }
-      <Section title='项目'>
-        <div class='grid grid-cols-1 gap-3 sm:grid-cols-2'>
-          <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='Do not go gentle into that good night'
-            imagePath='/src/assets/projects/1.avif'
-          />
-          <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='Old age burn and rave at close of day'
-            imagePath='/src/assets/projects/2.avif'
-          />
-          <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='Rage, rage against the dying of the light'
-            imagePath='/src/assets/projects/3.avif'
-          />
-          <ProjectCard
-            href='/projects'
-            heading='More projects'
-            subheading='Check out more projects'
-            imagePath='/src/assets/projects/4.avif'
-          />
-        </div>
-      </Section>
-
-      <Section title='技能'>
-        <SkillLayout title='Languages' skills={languages} />
-        <SkillLayout title='Ai Tools' skills={aitools} />
-        <SkillLayout title='Design' skills={design} />
-      </Section>
     </div>
     <Quote class='mt-12' />
   </main>

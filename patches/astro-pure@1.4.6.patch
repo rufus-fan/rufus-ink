@@ -1,0 +1,121 @@
+diff --git a/components/basic/Header.astro b/components/basic/Header.astro
+index 3101092ab2e7aafada6a05d9d67e947be595a95d..3de91973521940cef6e7491b9f8eedc8496584a9 100644
+--- a/components/basic/Header.astro
++++ b/components/basic/Header.astro
+@@ -81,7 +81,6 @@ import { Icon } from '../user'
+       this.classList.toggle('not-top', preScrollY > 20)
+       window.addEventListener('scroll', () => {
+         this.classList.toggle('not-top', window.scrollY > 20)
+-        this.dataset.show = (window.scrollY < 350 || window.scrollY < preScrollY).toString()
+         preScrollY = window.scrollY
+       })
+ 
+@@ -112,7 +111,6 @@ import { Icon } from '../user'
+   header-component {
+     transition:
+       padding 0.3s,
+-      transform 0.3s,
+       margin-inline 0.3s,
+       border 0.15s,
+       background-color 0.15s;
+@@ -130,9 +128,6 @@ import { Icon } from '../user'
+         rgba(39, 39, 42, 0.08) 0px 10px 15px -3px,
+         rgba(39, 39, 42, 0.08) 0px 4px 6px -4px;
+     }
+-    &[data-show='false']:not(.expanded) {
+-      transform: translateY(-5rem);
+-    }
+   }
+   @media (min-width: 800px) {
+     header-component.not-top {
+diff --git a/components/basic/ThemeProvider.astro b/components/basic/ThemeProvider.astro
+index 19145c6689fb3ce63999a13550c128138b1da4e3..e1e9a05b45e6b506c4fa372d4f832feb07c884e9 100644
+--- a/components/basic/ThemeProvider.astro
++++ b/components/basic/ThemeProvider.astro
+@@ -6,9 +6,9 @@
+ <script is:inline>
+   function simpleSetTheme() {
+     let theme = localStorage.getItem('theme')
+-    // If undefined or 'system', get from system
++    // system-following disabled; fall back to light
+     if (!theme || theme === 'system') {
+-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
++      theme = 'light'
+     }
+     document.documentElement.classList.toggle('dark', theme === 'dark')
+     document
+@@ -16,15 +16,18 @@
+       ?.setAttribute('content', theme === 'dark' ? '#0B0B10' : '#FCFCFD')
+   }
+   simpleSetTheme()
++  // Migrate theme across view transitions to avoid flash
++  document.addEventListener('astro:before-swap', (event) => {
++    if (document.documentElement.classList.contains('dark')) {
++      event.newDocument.documentElement.classList.add('dark')
++    }
++  })
+   document.addEventListener('astro:page-load', () => simpleSetTheme())
+ </script>
+ 
+ <script>
+   import { Icons } from '../../libs/icons'
+-  import { listenThemeChange } from '../../utils'
+ 
+-  // Listen for theme change event
+-  listenThemeChange()
+   // Listen for toast event
+   document.addEventListener('toast', (e) => {
+     const { message, time } = (e as CustomEvent).detail
+diff --git a/utils/theme.ts b/utils/theme.ts
+index 7797e52678e306136bedb0d580c8595c68eea5e4..76f3fc5feb9832372e767c4e37e3f96f43bd29f4 100644
+--- a/utils/theme.ts
++++ b/utils/theme.ts
+@@ -2,40 +2,28 @@ export function getTheme() {
+   return localStorage.getItem('theme')
+ }
+ 
+-export function listenThemeChange(theme?: string) {
+-  // If theme is specified, no need to listen window theme change
+-  if (theme && theme !== 'system') return
+-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+-    setTheme(e.matches ? 'dark' : 'light')
+-  })
++export function listenThemeChange(_theme?: string) {
++  // system-following disabled
+ }
+ 
+ export function setTheme(theme?: string, save = false) {
+-  const themes = ['system', 'dark', 'light']
++  const themes = ['dark', 'light']
+   if (theme) {
+     if (!themes.includes(theme)) return
+     if (save) localStorage.setItem('theme', theme)
+   } else {
+-    theme = getTheme() ?? undefined
++    theme = getTheme() ?? 'light'
+     if (save) {
+-      // Set theme equals undefined, switch cycle in ['system', 'dark', 'light']
+-      const currentIndex = themes.indexOf(theme ?? 'system')
+-      theme = themes[(currentIndex + 1) % themes.length]
+-      localStorage.setItem('theme', theme) // save theme
++      theme = themes[(themes.indexOf(theme) + 1) % themes.length]
++      localStorage.setItem('theme', theme)
+     }
+   }
+-  let targetTheme = theme
+-  if (theme === 'system') {
+-    targetTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+-    // Listen theme change
+-    listenThemeChange(theme)
+-  }
+ 
+   // Set theme
+-  document.documentElement.classList.toggle('dark', targetTheme === 'dark')
++  document.documentElement.classList.toggle('dark', theme === 'dark')
+   document
+     .querySelector('meta[name="theme-color"]')
+-    ?.setAttribute('content', targetTheme === 'dark' ? '#0B0B10' : '#FCFCFD')
++    ?.setAttribute('content', theme === 'dark' ? '#0B0B10' : '#FCFCFD')
+ 
+   return theme
+ }

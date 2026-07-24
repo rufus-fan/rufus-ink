@@ -38,5 +38,8 @@
     "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1"
+  },
+  "patchedDependencies": {
+    "astro-pure@1.4.6": "patches/astro-pure@1.4.6.patch"
   }
 }

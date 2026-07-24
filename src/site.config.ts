@@ -5,7 +5,7 @@ export const theme: ThemeUserConfig = {
   /** Title for your website. Will be used in metadata and as browser tab title. */
   title: 'Rufus\' ink ',
   /** Will be used in index page & copyright declaration */
-  author: 'Rufus',
+  author: '范铭哲 Rufus',
   /** Description metadata for your website. Can be used in page metadata. */
   description: 'Stay hungry, stay foolish',
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
@@ -48,6 +48,7 @@ export const theme: ThemeUserConfig = {
   /** Configure the header of your site. */
   header: {
     menu: [
+      { title: '首页', link: '/' }, 
       { title: '文章', link: '/blog' },
       { title: '项目', link: '/projects' },
       { title: '朋友', link: '/links' },
@@ -117,8 +118,8 @@ export const integ: IntegrationUserConfig = {
     applyTip: [
       { name: 'Name', val: theme.title },
       { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://astro-pure.js.org/' },
-      { name: 'Avatar', val: 'https://astro-pure.js.org/favicon/favicon.ico' }
+      { name: 'Link', val: 'https://blog.arminos.cn/' },
+      { name: 'Avatar', val: 'https://blog.arminos.cn/favicon/favicon.ico' }
     ],
     // Cache avatars in `public/avatars/` to improve user experience.
     cacheAvatar: false
@@ -164,7 +165,7 @@ export const integ: IntegrationUserConfig = {
   waline: {
     enable: true,
     // Server service link
-    server: 'https://astro-theme-pure-waline.arthals.ink/',
+    server: 'https://rufus-ink-waline.vercel.app/',
     // Show meta info for comments
     showMeta: false,
     // Refer https://waline.js.org/en/guide/features/emoji.html
@@ -176,7 +177,7 @@ export const integ: IntegrationUserConfig = {
       comment: true,
       locale: {
         reaction0: 'Like',
-        placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
+        placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)',
       },
       imageUploader: false
     }

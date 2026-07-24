@@ -160,6 +160,11 @@ const { class: className } = Astro.props
   #waline :global(.wl-reaction img) {
     filter: invert(25%);
   }
+
+  /* 隐藏评论区的 RSS 订阅链接 */
+  #waline :global(a[href*="comment/rss"]) {
+    display: none !important;
+  }
   :global(.dark) #waline :global(.wl-reaction img) {
     filter: invert(75%);
   }

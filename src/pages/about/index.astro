@@ -5,37 +5,72 @@ import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
 
 const headings = [
-  { depth: 2, slug: 'hobbies', text: 'Hobbies' },
-  { depth: 2, slug: 'tools', text: 'Tools' },
+  { depth: 2, slug: 'experience', text: '职业经历' },
+  { depth: 2, slug: 'tools', text: '工具箱' },
   { depth: 2, slug: 'social-networks', text: 'Social Networks' },
-  { depth: 2, slug: 'gossips', text: 'Gossips' },
-  { depth: 2, slug: 'about-blog', text: 'About Blog' }
+  { depth: 2, slug: 'about-blog', text: '关于本博客' }
 ]
 ---
 
 <PageLayout title='About' {headings} comment>
   <p>Developer / Designer</p>
   <p>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
-    possit voluptatum.
+    擅长用最小成本验证想法，找到真正的市场需求，再把业务规模化。
   </p>
   <p>
     Motto: Stay hungry, Stay foolish. <Spoiler>这里可以夹私货，比如为什么要演奏春日影！</Spoiler>
   </p>
-  <Button title='Sponsor Me' class='w-fit' href='/projects#sponsorship' variant='ahead' />
 
-  {/* general-talk */}
-  <h2 id='hobbies'>Hobbies</h2>
-  <ul>
-    <li>Lorem ipsum dolor sit amet, vidit suscipit at mei.</li>
-    <li>
-      Quem denique mea id. Usu ei regione indoctum dissentiunt, cu meliore fuisset mei, vel quod
-      voluptua ne.
-    </li>
-    <li>Ex dicat impedit mel, at eum oratio possit voluptatum.</li>
-    <li>Impetus fuisset ullamcorper pri cu, his posse iisque ad, aliquam honestatis usu id.</li>
-  </ul>
+  {/* experience */}
+  <h2 id='experience'>职业经历</h2>
+  <Timeline
+    class='about-timeline'
+      events={[
+        {
+          date: '2025～至今',
+          content: `<p>本地生活 &amp; 使用AI构筑产品</p>
+                      <ul>
+                        <li>为 500 家药房提供代运营支持；</li>
+                        <li>沉浸于 Vibe Coding，一人即一个完整的 Team，为自己制作产品，也为公司使用 AI 进行业务提效：
+                          <ul>
+                            <li><a href="https://dashboard.arminos.cn" target="_blank">XianyuFlip</a> — 帮助闲鱼卖家 24 小时自动销售</li>
+                            <li><a href="https://yuanqihupo.com/" target="_blank">元气琥珀用户中心</a> — 专业的用户健康管理 &amp; 营销中心</li>
+                          </ul>
+                        </li>
+                      </ul>`
+        },
+        {
+          date: '2022～2024',
+          content: `<p>本地生活业务负责人</p>
+                      <ul>
+                        <li>负责神犬外卖业务（淘宝闪购头部服务商），社群用户规模峰值超 200 万人，月订单破百万；</li>
+                        <li>拿下淘宝闪购上海、宁波两座核心城市独家招商权限。</li>
+                      </ul>`
+        },
+        {
+          date: '2021～2022',
+          content: `<p>跨境电商产品经理</p>
+                      <ul>
+                        <li>设计并上线商品中心，实现图片智能翻译且支持译后编辑，自动分发到各语种销售平台，上品人效提高 8 倍；</li>
+                        <li>从 0-1 独立完成电商独立站搭建，快速验证东南亚电商业务模式，单站点月 UV 25w。</li>
+                      </ul>`
+        },
+        {
+          date: '2019～2021',
+          content: `<p>社交电商产品经理</p>
+                      <ul>
+                        <li>从零构建社交分期电商平台，零研发验证 MVP 月销 ¥500 万+，上线首季度过亿 GMV。</li>
+                      </ul>`
+        },
+        {
+          date: '2018～2019',
+          content: `<p>流利说用增小组</p>
+                      <ul>
+                        <li>最早做朋友圈打卡分享的团队，累计转发量破亿次（19 年 5 月微信下场限制朋友圈打卡病毒营销）。</li>
+                      </ul>`
+        }
+      ]}
+  />
 
   {/* tools */}
   <h2 id='tools'>Tools</h2>
@@ -189,35 +224,75 @@ const headings = [
     ]}
   />
 
-  {/* gossips */}
-  <h2 id='gossips'>Gossips</h2>
-  <Collapse title='Lorem ipsum'>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
-    possit voluptatum.
-  </Collapse>
-
   {/* about-blog */}
   <h2 id='about-blog'>About Blog</h2>
   <p>Website history:</p>
   <Timeline
+    class='about-timeline'
     events={[
       {
-        date: '2024-04-29',
-        content:
-          'Website refactored using <a href="https://astro.build/" target="_blank">Astro</a> and <a href="https://github.com/srleom/astro-theme-resume" target="_blank">Astro Theme Resume</a>'
+        date: '2024-05 至今',
+        content: `<p>Theme Released &amp; Documented</p>
+<ul>
+  <li>Website abstracted as a theme and published on <a href="https://github.com/cworld1/astro-theme-pure" target="_blank">GitHub</a>.</li>
+  <li>Began writing website docs, starting with:
+    <ul>
+      <li><a href="/docs/integrations/components" target="_blank">User Components</a> — reusable UI building blocks</li>
+      <li><a href="/docs/advanced/customize" target="_blank">Customize Theme</a> — package mode &amp; styling</li>
+    </ul>
+  </li>
+</ul>`
       },
       {
-        date: '2024-07-26',
-        content:
-          'Website abstracted as a theme and published on <a href="https://github.com/cworld1/astro-theme-pure"target="_blank">Github</a>'
-      },
-      {
-        date: '2024-07-27',
-        content: 'Began writing website docs'
+        date: '2024-04',
+        content: `<p>Refactored with Astro</p>
+<ul>
+  <li>Rebuilt using <a href="https://astro.build/" target="_blank">Astro</a> and <a href="https://github.com/srleom/astro-theme-resume" target="_blank">Astro Theme Resume</a>.</li>
+</ul>`
       }
     ]}
   />
+  <style is:global>
+    .about-timeline samp {
+      text-align: left;
+      line-height: 1.8;
+    }
+    @media (min-width: 640px) {
+      .about-timeline samp {
+        width: 7rem;
+        min-width: 7rem;
+      }
+    }
+    /* add breathing room between timeline events */
+    .about-timeline > ul > li {
+      padding-bottom: 1.25rem;
+    }
+    .about-timeline > ul > li:last-child {
+      padding-bottom: 0;
+    }
+    .about-timeline p {
+      margin: 0 0 0.375rem;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+    .about-timeline ul {
+      margin: 0.375rem 0 0;
+      padding-inline-start: 1.25rem;
+      list-style: disc;
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+    .about-timeline ul ul {
+      margin-top: 0.375rem;
+    }
+    .about-timeline li {
+      margin-block: 0.375rem;
+    }
+  </style>
   <p>
     The smooth operation and personalized customization of website also rely on the resources and
     technical support provided by the following excellent projects/service providers:
