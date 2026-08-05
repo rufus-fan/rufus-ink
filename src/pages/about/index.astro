@@ -7,8 +7,8 @@ import ToolSection from '@/components/about/ToolSection.astro'
 const headings = [
   { depth: 2, slug: 'experience', text: '职业经历' },
   { depth: 2, slug: 'tools', text: '工具箱' },
-  { depth: 2, slug: 'social-networks', text: 'Social Networks' },
-  { depth: 2, slug: 'about-blog', text: '关于本博客' }
+  { depth: 2, slug: 'social-networks', text: '社交媒体' },
+  { depth: 2, slug: 'about-blog', text: '关于博客' }
 ]
 ---
 
@@ -71,9 +71,50 @@ const headings = [
         }
       ]}
   />
+  <style is:global>
+    .about-timeline samp {
+      text-align: left;
+      line-height: 1.8;
+    }
+    @media (min-width: 640px) {
+      .about-timeline samp {
+        width: 7rem;
+        min-width: 7rem;
+      }
+    }
+    /* add breathing room between timeline events */
+    .about-timeline > ul > li {
+      padding-bottom: 1.25rem;
+    }
+    .about-timeline > ul > li:last-child {
+      padding-bottom: 0;
+    }
+    .about-timeline p {
+      margin: 0 0 0.375rem;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+    .about-timeline ul {
+      margin: 0.375rem 0 0;
+      padding-inline-start: 1.25rem;
+      list-style: disc;
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+    .about-timeline ul ul {
+      margin-top: 0.375rem;
+    }
+    .about-timeline li {
+      margin-block: 0.375rem;
+    }
+  </style>
 
   {/* tools */}
-  <h2 id='tools'>Tools</h2>
+  <h2 id='tools'>工具箱</h2>
   <p>Current support tools as follow:</p>
   <ToolSection
     class='mb-5'
@@ -191,10 +232,9 @@ const headings = [
   />
 
   {/* social-networks */}
-  <h2 id='social-networks'>Social Networks</h2>
+  <h2 id='social-networks'>社交媒体</h2>
   <p>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne.
+    你可以在以下平台找到我：
   </p>
   <Substats
     stats={[
@@ -225,101 +265,25 @@ const headings = [
   />
 
   {/* about-blog */}
-  <h2 id='about-blog'>About Blog</h2>
-  <p>Website history:</p>
-  <Timeline
-    class='about-timeline'
-    events={[
-      {
-        date: '2024-05 至今',
-        content: `<p>Theme Released &amp; Documented</p>
-<ul>
-  <li>Website abstracted as a theme and published on <a href="https://github.com/cworld1/astro-theme-pure" target="_blank">GitHub</a>.</li>
-  <li>Began writing website docs, starting with:
-    <ul>
-      <li><a href="/docs/integrations/components" target="_blank">User Components</a> — reusable UI building blocks</li>
-      <li><a href="/docs/advanced/customize" target="_blank">Customize Theme</a> — package mode &amp; styling</li>
-    </ul>
-  </li>
-</ul>`
-      },
-      {
-        date: '2024-04',
-        content: `<p>Refactored with Astro</p>
-<ul>
-  <li>Rebuilt using <a href="https://astro.build/" target="_blank">Astro</a> and <a href="https://github.com/srleom/astro-theme-resume" target="_blank">Astro Theme Resume</a>.</li>
-</ul>`
-      }
-    ]}
-  />
-  <style is:global>
-    .about-timeline samp {
-      text-align: left;
-      line-height: 1.8;
-    }
-    @media (min-width: 640px) {
-      .about-timeline samp {
-        width: 7rem;
-        min-width: 7rem;
-      }
-    }
-    /* add breathing room between timeline events */
-    .about-timeline > ul > li {
-      padding-bottom: 1.25rem;
-    }
-    .about-timeline > ul > li:last-child {
-      padding-bottom: 0;
-    }
-    .about-timeline p {
-      margin: 0 0 0.375rem;
-      text-align: left;
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.8;
-      letter-spacing: 0.01em;
-    }
-    .about-timeline ul {
-      margin: 0.375rem 0 0;
-      padding-inline-start: 1.25rem;
-      list-style: disc;
-      font-size: 0.9375rem;
-      line-height: 1.8;
-      letter-spacing: 0.01em;
-    }
-    .about-timeline ul ul {
-      margin-top: 0.375rem;
-    }
-    .about-timeline li {
-      margin-block: 0.375rem;
-    }
-  </style>
+  <h2 id='about-blog'>关于博客</h2>
   <p>
-    The smooth operation and personalized customization of website also rely on the resources and
-    technical support provided by the following excellent projects/service providers:
+    本站基于以下项目/服务提供商的资源和技术支持：
   </p>
   <ul>
-    <li>Domain: <a href='#' target='_blank'>Vercel</a></li>
+    <li>域名: <a href='https://www.aliyun.com/' target='_blank'>Aliyun</a></li>
     <li>
-      Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
+      框架 & 主题: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
         href='https://github.com/cworld1/astro-theme-pure'
         target='_blank'>Astro Theme Pure</a
       >
     </li>
+    <li>站点托管&CI/CD: <a href='https://vercel.com/' target='_blank'>Vercel</a></li>
+    <li>评论系统: <a href='https://waline.js.org' target='_blank'>Waline</a></li>
+    <li>数据存储: <a href='https://neon.com/' target='_blank'>Neno</a></li>
     <li>
-      Site hosting: <a href='https://vercel.com/' target='_blank'>Vercel</a>
+      访问量统计: <a href='https://waline.js.org/' target='_blank'>Waline</a>
+      {/* <a href='https://umami.is/' target='_blank'>Umami</a> */}
     </li>
-    <li>
-      CI/CD: <a href='https://vercel.com/workflow' target='_blank'>Vercel Workflow</a>
-    </li>
-    <li>Comment system: <a href='https://waline.js.org' target='_blank'>Waline</a></li>
-    <li>
-      Visits: <a href='https://supabase.com/' target='_blank'>Supabase</a> +
-      <a href='https://waline.js.org/' target='_blank'>Waline</a>
-    </li>
-    <li>
-      Other statistics: <a href='https://github.com/spencerwooo/substats' target='_blank'
-        >Substats</a
-      >
-    </li>
+    <li>粉丝数统计: <a href='https://github.com/spencerwooo/substats' target='_blank'>Substats</a></li>
   </ul>
 </PageLayout>

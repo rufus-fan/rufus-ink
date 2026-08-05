@@ -4,13 +4,18 @@ import { Image } from 'astro:assets'
 import { Button, Collapse, Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
+import Sponsors from '@/components/projects/Sponsors.astro'
+import Sponsorship from '@/components/projects/Sponsorship.astro'
+import alipay from '@/assets/alipay-qrcode.jpg'
 import KeyIcon from '@/assets/icons/key.svg'
+import wechat from '@/assets/wechat-qrcode.jpg'
 
 const headings = [
   { depth: 2, slug: 'programs', text: 'Programs' },
   { depth: 2, slug: 'learnings', text: 'Learnings' },
   { depth: 2, slug: 'others', text: 'Others' },
   { depth: 2, slug: 'gpg-signature', text: 'GPG Signature' },
+  { depth: 2, slug: 'sponsorship', text: 'Sponsorship' }
 ]
 ---
 
@@ -25,6 +30,13 @@ const headings = [
       loading='lazy'
     />
   </p>
+  <p>
+    If you think it would be useful or interesting to collaborate on a project, you can donate to
+    support my work or contact me to discuss a project.
+  </p>
+  <Button title='赞赏我的工作' class='w-fit' href='#sponsorship'>
+    <Icon class='size-5' name='receive-money' slot='before' />
+  </Button>
 
   <h2 id='programs'>Programs</h2>
   <ProjectSection
@@ -123,8 +135,42 @@ const headings = [
   <Button href='https://keys.openpgp.org/search?q=114514' title='Checkout my key' target='_blank'>
     <KeyIcon class='size-5' slot='before' />
   </Button>
+
+  <h2 id='Sponsorship'>赞赏</h2>
+  <p>感谢您的赞赏，您的支持是我最大的动力。</p>
+  <Sponsorship
+    methods={[
+      { name: 'WeChat', icon: 'wechat-pay', image: wechat },
+      { name: 'Alipay', icon: 'alipay', image: alipay }
+    ]}
+  />
+
+  {/*   
+  <Sponsors
+    progressMax={50}
+    sponsors={[
+      { name: 'd2be8', platform: 'Afdian', amount: 5, date: '2026-05-22' },
+    ]}
+  />
+  */}
 </PageLayout>
 
 <style>
+  .sponsorship-card {
+    & .sponsorship-card-img {
+      opacity: 0.3;
+      --un-blur: blur(4px);
+      filter: var(--un-blur);
+    }
 
+    &:hover {
+      & .sponsorship-card-icon {
+        opacity: 0;
+      }
+      & .sponsorship-card-img {
+        opacity: 1;
+        --un-blur: blur(0);
+      }
+    }
+  }
 </style>
