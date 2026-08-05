@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "harness-engineering.md",
+                "file": "mcp-tool-design-tips-part1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "harness-engineering"
+              "title": "mcp-tool-design-tips-part1"
             }
           }
         ]
@@ -183,22 +183,26 @@
       "bases:新建数据库": false
     }
   },
-  "active": "6bcf420b314f74d9",
+  "active": "c865fcf51e0db0b0",
   "lastOpenFiles": [
+    "图灵完备/第一章.md",
+    "图灵完备",
     "learnpython.md",
+    "AI内容生产.md",
+    "draft.md",
+    "未命名.md",
+    "harness-engineering.md",
     "mcp-tool-design-tips-part1.md",
     "如何让你的 Agent 更准确：MCP 工具设计技巧（上）.md",
     "未命名 1.canvas",
     "未命名.canvas",
     "人生杠杆.md",
-    "harness-engineering.md",
     "harness-engineering/cover.jpg",
     "harness-engineering",
     "XianyuFlip使用指南/index.md",
     "XianyuFlip使用指南/image1.png",
     "XianyuFlip使用指南/example.png",
     "XianyuFlip使用指南/thumbnail.png",
-    "draft.md",
     "markdown-zh/index.md",
     "markdown-zh/thumbnail.jpg",
     "learnpython",
