@@ -14,6 +14,10 @@ interface Props {
     href: string
     icon: Promise<typeof import('*.svg?raw')> | ImageMetadata
     darkIcon?: Promise<typeof import('*.svg?raw')> | ImageMetadata
+    /** 图标本身是彩色 logo（如品牌官方彩色图标），渲染时保留原色；否则按主题前景色单色渲染 */
+    color?: boolean
+    /** 已弃用工具：整体加透明遮罩 + 角标展示弃用原因 */
+    deprecated?: string
   }[]
 }
 
@@ -32,13 +36,13 @@ function isImageMetadata(obj: unknown): obj is ImageMetadata {
   <div class='grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-2'>
     {
       tools.map((tool) => (
-        <a
-          class='group relative text-sm leading-normal no-underline'
-          href={tool.href}
-          id={tool.name}
-          target='_blank'
-        >
-          <div class='flex items-center gap-x-3 rounded-lg border border-transparent px-1.5 py-1 transition-colors hover:border-border hover:bg-muted'>
+        <a class='group relative text-sm leading-normal no-underline' href={tool.href} target='_blank'>
+          <div
+            class={cn(
+              'flex items-center gap-x-3 rounded-lg border border-transparent px-1.5 py-1 transition-colors hover:border-border hover:bg-muted',
+              tool.deprecated && 'opacity-70 grayscale'
+            )}
+          >
             {tool.darkIcon ? (
               <>
                 {isImageMetadata(tool.icon) ? (
@@ -48,7 +52,7 @@ function isImageMetadata(obj: unknown): obj is ImageMetadata {
                 ) : (
                   <Svg
                     src={tool.icon}
-                    class='size-10 rounded-lg bg-card fill-foreground p-2 dark:hidden'
+                    class={cn('size-10 rounded-lg bg-card p-2 dark:hidden', !tool.color && 'fill-foreground')}
                   />
                 )}
 
@@ -63,7 +67,7 @@ function isImageMetadata(obj: unknown): obj is ImageMetadata {
                 ) : (
                   <Svg
                     src={tool.darkIcon}
-                    class='size-10 rounded-lg bg-card fill-foreground p-2 hidden dark:block'
+                    class={cn('size-10 rounded-lg bg-card p-2 hidden dark:block', !tool.color && 'fill-foreground')}
                   />
                 )}
               </>
@@ -74,7 +78,10 @@ function isImageMetadata(obj: unknown): obj is ImageMetadata {
                     <Image src={tool.icon} alt={tool.name} class='h-full w-full object-contain' />
                   </div>
                 ) : (
-                  <Svg src={tool.icon} class='size-10 rounded-lg bg-card fill-foreground p-2' />
+                  <Svg
+                    src={tool.icon}
+                    class={cn('size-10 rounded-lg bg-card p-2', !tool.color && 'fill-foreground')}
+                  />
                 )}
               </>
             )}
@@ -83,6 +90,19 @@ function isImageMetadata(obj: unknown): obj is ImageMetadata {
               <div class='font-normal'>{tool.description}</div>
             </div>
           </div>
+          {tool.deprecated && (
+            <>
+              {/* 透明遮罩 */}
+              <div
+                class='pointer-events-none absolute inset-0 z-10 rounded-lg bg-foreground/5 shadow-inner'
+                aria-hidden='true'
+              />
+              {/* 弃用角标 */}
+              <span class='absolute end-1.5 top-1.5 z-20 rounded-md border bg-background/85 px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground backdrop-blur-sm'>
+                弃用·{tool.deprecated}
+              </span>
+            </>
+          )}
         </a>
       ))
     }
