@@ -11,9 +11,8 @@ import KeyIcon from '@/assets/icons/key.svg'
 import wechat from '@/assets/wechat-qrcode.jpg'
 
 const headings = [
-  { depth: 2, slug: 'programs', text: 'Programs' },
-  { depth: 2, slug: 'learnings', text: 'Learnings' },
-  { depth: 2, slug: 'others', text: '其他' },
+  { depth: 2, slug: 'programs', text: '产品 & 服务' },
+  { depth: 2, slug: 'learnings', text: '学习 & 分享' },
   { depth: 2, slug: 'gpg-signature', text: 'GPG 签名' },
   { depth: 2, slug: 'sponsorship', text: '打赏' }
 ]
@@ -38,7 +37,7 @@ const headings = [
     <Icon class='size-5' name='receive-money' slot='before' />
   </Button>
 
-  <h2 id='programs'>产品</h2>
+  <h2 id='programs'>产品 & 服务</h2>
   <ProjectSection
     projects={[
       {
@@ -86,15 +85,15 @@ const headings = [
     />
   </Collapse>
 
-  <h2 id='learnings'>学习</h2>
+  <h2 id='learnings'>学习 & 分享</h2>
   <ProjectSection
     class='my-2'
     projects={[
       {
-        name: '图灵完备',
-        description: '数字电路、计算机原理学习实践',
+        name: '🔲 图灵完备',
+        description: '从逻辑门到处理器。数字电路、计算机原理学习实践。',
         links: [
-          { type: 'site', href: 'https://cworld1.github.io/r-learning' }
+          { type: 'site', href: 'https://turingcomplete.game/profile/29737' }
         ]
       }
     ]}
