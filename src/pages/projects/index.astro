@@ -38,7 +38,7 @@ const headings = [
     <Icon class='size-5' name='receive-money' slot='before' />
   </Button>
 
-  <h2 id='programs'>Programs</h2>
+  <h2 id='programs'>产品</h2>
   <ProjectSection
     projects={[
       {
@@ -86,43 +86,16 @@ const headings = [
     />
   </Collapse>
 
-  <h2 id='learnings'>Learnings</h2>
+  <h2 id='learnings'>学习</h2>
   <ProjectSection
     class='my-2'
     projects={[
       {
-        name: 'R Learning',
-        description: 'Some notes and code about learning R language',
+        name: '图灵完备',
+        description: '数字电路、计算机原理学习实践',
         links: [
-          { type: 'github', href: 'https://github.com/cworld1/r-learning' },
           { type: 'site', href: 'https://cworld1.github.io/r-learning' }
         ]
-      },
-      {
-        name: 'CS 213 Learning',
-        description: 'Notes, code and experiences for Introduction to Computer Systems course',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/zhuozhiyongde/Introduction-To-Computer-System-2023Fall-PKU'
-          }
-        ]
-      }
-    ]}
-  />
-
-  <h2 id='others'>其他</h2>
-  <ProjectSection
-    projects={[
-      {
-        name: 'CWorld',
-        description: "CWorld's Github",
-        links: [{ type: 'github', href: 'https://github.com/cworld1' }]
-      },
-      {
-        name: 'Arthals',
-        description: 'Arthals Github',
-        links: [{ type: 'github', href: 'https://github.com/zhuozhiyongde' }]
       }
     ]}
   />
@@ -136,7 +109,7 @@ const headings = [
     <KeyIcon class='size-5' slot='before' />
   </Button>
 
-  <h2 id='Sponsorship'>打赏</h2>
+  <h2 id='sponsorship'>打赏</h2>
   <p>感谢您的赞赏，您的支持是我最大的动力。</p>
   <Sponsorship
     methods={[
