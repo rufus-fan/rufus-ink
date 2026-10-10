@@ -17,6 +17,40 @@ function parseMetaString(str = '') {
   )
 }
 
+function lineText(line: any): string {
+  let text = ''
+  const visit = (node: any) => {
+    if (node.type === 'text') text += node.value
+    else if ('children' in node) node.children.forEach(visit)
+  }
+  visit(line)
+  return text
+}
+
+// Turn ```diff blocks into the same styled lines as the [!code ++] / [!code --] notations
+export const transformerDiffLang = (): ShikiTransformer => {
+  return {
+    name: 'shiki-transformer-diff-lang',
+    code(node) {
+      if (this.options.lang !== 'diff') return
+      const lines = node.children.filter(i => i.type === 'element')
+      let hasDiff = false
+      for (const line of lines) {
+        const text = lineText(line)
+        if (text.startsWith('+')) {
+          this.addClassToHast(line, 'diff add')
+          hasDiff = true
+        }
+        else if (text.startsWith('-')) {
+          this.addClassToHast(line, 'diff remove')
+          hasDiff = true
+        }
+      }
+      if (hasDiff) this.addClassToHast(this.pre, 'has-diff')
+    }
+  }
+}
+
 // Nest a div in the outer layer
 export const updateStyle = (): ShikiTransformer => {
   return {

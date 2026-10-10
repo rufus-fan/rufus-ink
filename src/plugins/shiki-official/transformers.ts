@@ -94,6 +94,60 @@ export function transformerNotationHighlight(
   )
 }
 
+// https://shiki.style/packages/transformers#transformermetahighlight
+// https://github.com/shikijs/shiki/blob/main/packages/transformers/src/transformers/meta-highlight.ts
+export interface TransformerMetaHighlightOptions {
+  /**
+   * Class for highlighted lines
+   */
+  classActiveLine?: string
+  /**
+   * Class added to the root element when the code has highlighted lines
+   */
+  classActivePre?: string
+}
+/**
+ * Use ` ```ts {1,3-5}` meta to highlight lines without polluting the code content.
+ */
+export function transformerMetaHighlight(
+  options: TransformerMetaHighlightOptions = {},
+): ShikiTransformer {
+  const {
+    classActiveLine = 'highlighted',
+    classActivePre = 'has-highlighted',
+  } = options
+
+  return {
+    name: '@shikijs/transformers:meta-highlight',
+    code(hast) {
+      const raw = this.options.meta?.__raw ?? ''
+      const match = raw.match(/\{([\d,\s-]+)\}/)
+      if (!match)
+        return
+
+      const indices = new Set<number>()
+      for (const part of match[1].split(',')) {
+        const [startStr, endStr] = part.split('-').map(s => s.trim())
+        const start = Number.parseInt(startStr, 10)
+        if (Number.isNaN(start))
+          continue
+        const end = Number.parseInt(endStr, 10) || start
+        for (let i = start; i <= end; i++)
+          indices.add(i - 1)
+      }
+      if (!indices.size)
+        return
+
+      const lines = hast.children.filter(i => i.type === 'element')
+      lines.forEach((line, idx) => {
+        if (indices.has(idx))
+          this.addClassToHast(line, classActiveLine)
+      })
+      this.addClassToHast(this.pre, classActivePre)
+    },
+  }
+}
+
 // https://shiki.style/packages/transformers#transformerremovenotationescape
 // https://github.com/shikijs/shiki/blob/main/packages/transformers/src/transformers/remove-notation-escape.ts
 /**

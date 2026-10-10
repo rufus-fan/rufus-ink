@@ -4,6 +4,7 @@ import AstroPureIntegration from 'astro-pure'
 import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+import { remarkAlert } from 'remark-github-blockquote-alert'
 
 // Local integrations
 import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
@@ -13,9 +14,11 @@ import {
   addCopyButton,
   addLanguage,
   addTitle,
+  transformerDiffLang,
   updateStyle
 } from './src/plugins/shiki-custom-transformers.ts'
 import {
+  transformerMetaHighlight,
   transformerNotationDiff,
   transformerNotationHighlight,
   transformerRemoveNotationEscape
@@ -73,7 +76,12 @@ export default defineConfig({
 
   // [Markdown]
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [
+      remarkMath,
+      // GFM alerts: > [!NOTE] / [!TIP] / [!IMPORTANT] / [!WARNING] / [!CAUTION]
+      // With legacyTitle, > [!NOTE/自定义标题] overrides the default title
+      [remarkAlert, { legacyTitle: true }]
+    ],
     rehypePlugins: [
       [rehypeKatex, {}],
       rehypeHeadingIds,
@@ -101,8 +109,12 @@ export default defineConfig({
         // @ts-ignore this happens due to multiple versions of shiki types
         transformerNotationHighlight(),
         // @ts-ignore this happens due to multiple versions of shiki types
+        transformerMetaHighlight(),
+        // @ts-ignore this happens due to multiple versions of shiki types
         transformerRemoveNotationEscape(),
         // Custom transformers
+        // @ts-ignore this happens due to multiple versions of shiki types
+        transformerDiffLang(),
         // @ts-ignore this happens due to multiple versions of shiki types
         updateStyle(),
         // @ts-ignore this happens due to multiple versions of shiki types
