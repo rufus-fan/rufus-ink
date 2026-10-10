@@ -1,6 +1,6 @@
 ---
 title: 从「异或」的名字说起：逻辑门全家桶速览
-publishDate: 2026-11-12
+publishDate: 2026-09-24
 description: 《图灵完备》游戏笔记第一篇：把每个逻辑门的名字拆开看，用真值表和口诀认识 NOT、AND、OR、NAND、NOR、XOR、XNOR 这一家子。
 tags:
   - 图灵完备

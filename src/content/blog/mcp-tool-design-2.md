@@ -1,6 +1,6 @@
 ---
 title: LLM 如何「看到」你的工具：MCP 工具设计要点
-publishDate: 2026-11-09
+publishDate: 2026-09-21
 description: 从 LLM 原生 Tool Calling 的完整链路，到工具定义的真实形态、工具数量上限，再到命名与描述的具体技巧——设计工具的本质，是设计 Agent 的认知体验。
 tags:
   - AI

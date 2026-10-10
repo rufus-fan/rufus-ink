@@ -1,6 +1,6 @@
 ---
 title: Harness Engineering（二）：Agent 如何运转——PPAF 循环与四大工程维度
-publishDate: 2026-10-26
+publishDate: 2026-09-07
 description: 一个完备的 Agent 系统，核心是感知、规划、行动、反思的持续循环。本篇拆解 PPAF 循环，以及 Harness 覆盖它的四大工程维度与战略分析矩阵。
 tags:
   - AI

@@ -1,6 +1,6 @@
 ---
 title: Harness Engineering（四）：落地实现——分层架构、沙盒治理与度量演进
-publishDate: 2026-11-02
+publishDate: 2026-09-14
 description: 从实现视角审视 Harness：控制平面与数据平面的四层架构、记忆分层与 Token 转化流水线、沙盒隔离分级、资源弹性策略与四组核心度量指标。
 tags:
   - AI

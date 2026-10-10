@@ -1,6 +1,6 @@
 ---
 title: Python 魔法方法速查：从 __repr__ 谈起
-publishDate: 2026-10-19
+publishDate: 2026-08-31
 description: 魔法方法是 Python 的「钩子」：定义之后由解释器在特定时机自动触发，让你的自定义类支持 print、比较、运算、循环、len、in 等内置操作。
 tags:
   - Python

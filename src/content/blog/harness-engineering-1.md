@@ -1,6 +1,6 @@
 ---
 title: Harness Engineering（一）：给 AI 这匹野马套上缰绳
-publishDate: 2026-10-22
+publishDate: 2026-09-03
 description: Harness Engineering 不是需要焦虑追捧的全新发明，而是对一系列现有工程实践的系统性总结与命名。本篇讲清它的概念来源、核心隐喻，以及我们为什么需要它。
 tags:
   - AI

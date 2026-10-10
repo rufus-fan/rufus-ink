@@ -1,6 +1,6 @@
 ---
 title: Harness Engineering（三）：设计之道——REPL 容器、上下文与 Function Calling
-publishDate: 2026-10-29
+publishDate: 2026-09-10
 description: 在架构层面，Harness 的本质是一个带边界控制的 REPL 容器。本篇讲它的顶层抽象、上下文管理策略、Function Calling 生命周期，以及绕不开的三大约束与六大设计原则。
 tags:
   - AI

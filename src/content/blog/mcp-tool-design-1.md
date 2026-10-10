@@ -1,6 +1,6 @@
 ---
 title: 为什么技术正确的工具，Agent 却用不好？
-publishDate: 2026-11-05
+publishDate: 2026-09-17
 description: 工具能跑通、Schema 定义正确、API 调用成功，但 Agent 总是选错工具、传错参数。问题不在技术实现，而在我们用写 API 的思维在写 Agent 工具。
 tags:
   - AI

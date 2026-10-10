@@ -1,6 +1,6 @@
 ---
 title: Markdown 排版指南：本站写作语法速查
-publishDate: 2026-10-12
+publishDate: 2026-08-24
 description: 一文速览本站 Markdown 的全部排版能力：警告块、代码行高亮、diff 对比、数学公式、表格与图片等，附写作规范建议。
 tags:
   - Markdown

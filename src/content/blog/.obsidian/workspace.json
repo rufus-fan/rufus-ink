@@ -11,12 +11,14 @@
             "id": "6bcf420b314f74d9",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "markdown-guide/thumbnail.jpg"
+                "file": "markdown-guide/index.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "thumbnail"
+              "icon": "lucide-file",
+              "title": "index"
             }
           }
         ]
@@ -183,8 +185,10 @@
       "bases:新建数据库": false
     }
   },
-  "active": "c865fcf51e0db0b0",
+  "active": "6bcf420b314f74d9",
   "lastOpenFiles": [
+    "XianyuFlip使用指南/example.png",
+    "markdown-guide/thumbnail.jpg",
     "covers/life-levers.png",
     "covers/python-magic-methods.png",
     "covers/turing-complete-4-karnaugh-map.png",
@@ -194,8 +198,6 @@
     "covers/mcp-tool-design-2.png",
     "covers/mcp-tool-design-1.png",
     "covers/harness-engineering-4.png",
-    "covers/harness-engineering-3.png",
-    "covers/harness-engineering-2.png",
     "covers",
     "markdown-guide/index.md",
     "mcp-tool-design-1.md",
