@@ -8,6 +8,9 @@ tags:
   - MCP
   - 工具设计
 language: 中文
+heroImage:
+  src: ./covers/mcp-tool-design-1.png
+  color: "#C2410C"
 ---
 
 > [!NOTE/AI 速读]

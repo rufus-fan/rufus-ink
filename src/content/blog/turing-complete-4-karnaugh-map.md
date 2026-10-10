@@ -7,6 +7,9 @@ tags:
   - 卡诺图
   - 数字电路
 language: 中文
+heroImage:
+  src: ./covers/turing-complete-4-karnaugh-map.png
+  color: "#917500"
 ---
 
 > [!NOTE/AI 速读]

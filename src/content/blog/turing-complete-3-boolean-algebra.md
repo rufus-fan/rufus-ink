@@ -7,6 +7,9 @@ tags:
   - 布尔代数
   - 数字电路
 language: 中文
+heroImage:
+  src: ./covers/turing-complete-3-boolean-algebra.png
+  color: "#917500"
 ---
 
 > [!NOTE/AI 速读]

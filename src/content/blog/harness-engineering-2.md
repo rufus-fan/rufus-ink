@@ -8,6 +8,9 @@ tags:
   - 工程化
   - LLM
 language: 中文
+heroImage:
+  src: ./covers/harness-engineering-2.png
+  color: "#002FA7"
 ---
 
 > [!NOTE/AI 速读]

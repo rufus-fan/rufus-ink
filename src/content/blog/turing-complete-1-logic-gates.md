@@ -7,6 +7,9 @@ tags:
   - 逻辑门
   - 数字电路
 language: 中文
+heroImage:
+  src: ./covers/turing-complete-1-logic-gates.png
+  color: "#917500"
 ---
 
 > [!NOTE/AI 速读]

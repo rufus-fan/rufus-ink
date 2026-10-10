@@ -9,6 +9,9 @@ tags:
   - 工具设计
   - LLM
 language: 中文
+heroImage:
+  src: ./covers/mcp-tool-design-2.png
+  color: "#C2410C"
 ---
 
 > [!NOTE/AI 速读]

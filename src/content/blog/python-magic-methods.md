@@ -6,6 +6,9 @@ tags:
   - Python
   - 编程基础
 language: 中文
+heroImage:
+  src: ./covers/python-magic-methods.png
+  color: "#4D7C0F"
 ---
 
 > [!NOTE/AI 速读]

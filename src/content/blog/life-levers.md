@@ -6,6 +6,9 @@ tags:
   - 随笔
   - 思考
 language: 中文
+heroImage:
+  src: ./covers/life-levers.png
+  color: "#68625A"
 ---
 
 > [!NOTE/AI 速读]
