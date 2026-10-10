@@ -11,14 +11,12 @@
             "id": "6bcf420b314f74d9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "markdown-guide/index.md",
-                "mode": "source",
-                "source": false
+                "file": "covers/turing-complete-4-karnaugh-map.png"
               },
-              "icon": "lucide-file",
-              "title": "index"
+              "icon": "lucide-image",
+              "title": "turing-complete-4-karnaugh-map"
             }
           }
         ]
@@ -187,22 +185,25 @@
   },
   "active": "6bcf420b314f74d9",
   "lastOpenFiles": [
-    "XianyuFlip使用指南/example.png",
-    "markdown-guide/thumbnail.jpg",
-    "covers/life-levers.png",
-    "covers/python-magic-methods.png",
-    "covers/turing-complete-4-karnaugh-map.png",
     "covers/turing-complete-3-boolean-algebra.png",
     "covers/turing-complete-2-nand.png",
     "covers/turing-complete-1-logic-gates.png",
+    "covers/python-magic-methods.png",
     "covers/mcp-tool-design-2.png",
     "covers/mcp-tool-design-1.png",
+    "covers/life-levers.png",
     "covers/harness-engineering-4.png",
-    "covers",
+    "covers/harness-engineering-3.png",
+    "covers/harness-engineering-2.png",
+    "covers/harness-engineering-1.png",
+    "harness-engineering-1.md",
+    "AI内容生产.md",
+    "draft.md",
+    "XianyuFlip使用指南/index.md",
     "markdown-guide/index.md",
+    "covers",
     "mcp-tool-design-1.md",
     "turing-complete-1-logic-gates.md",
-    "harness-engineering-1.md",
     "turing-complete-4-karnaugh-map.md",
     "turing-complete-3-boolean-algebra.md",
     "turing-complete-2-nand.md",
@@ -215,8 +216,6 @@
     "图灵完备/第一章.md",
     "图灵完备",
     "learnpython.md",
-    "AI内容生产.md",
-    "draft.md",
     "未命名.md",
     "harness-engineering.md",
     "mcp-tool-design-tips-part1.md",
@@ -225,7 +224,6 @@
     "未命名.canvas",
     "人生杠杆.md",
     "harness-engineering",
-    "XianyuFlip使用指南/index.md",
     "markdown-zh/index.md",
     "learnpython",
     "2025-02-09.md",

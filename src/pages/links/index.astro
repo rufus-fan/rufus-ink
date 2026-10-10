@@ -6,10 +6,14 @@ import { Collapse, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import FriendList from '@/components/links/FriendList.astro'
 
+// 友链功能暂时隐藏
+const showFriends = false
+
 const headings = [
-  { depth: 2, slug: 'common-links', text: '友链' },
+  // 友链功能暂时隐藏：把 showFriends 改回 true 即恢复友链与申请友链板块
+  ...(showFriends ? [{ depth: 2, slug: 'common-links', text: '友链' }] : []),
   { depth: 2, slug: 'special-links', text: '特殊链接' },
-  { depth: 2, slug: 'apply-links', text: '申请友链' }
+  ...(showFriends ? [{ depth: 2, slug: 'apply-links', text: '申请友链' }] : [])
 ]
 
 const { friends } = links
@@ -18,42 +22,50 @@ const linkEditPage = 'https://github.com/rufus-fan/astro-theme-pure/blob/main/pu
 ---
 
 <PageLayout title='Links' {headings} comment>
-  <p>友链无顺序，随机展示。</p>
-  <h2 id='common-links'>友链</h2>
-  <FriendList list={friends[0]} />
-  <Collapse title='Links with Bad Status'>
-    <FriendList list={friends[1]} />
-  </Collapse>
-  <Collapse title='Link History Book'>
-    <Timeline events={linksConf.logbook} />
-  </Collapse>
+  {showFriends && (
+    <>
+      <p>友链无顺序，随机展示。</p>
+      <h2 id='common-links'>友链</h2>
+      <FriendList list={friends[0]} />
+      <Collapse title='Links with Bad Status'>
+        <FriendList list={friends[1]} />
+      </Collapse>
+      <Collapse title='Link History Book'>
+        <Timeline events={linksConf.logbook} />
+      </Collapse>
+    </>
+  )}
   <h2 id='special-links'>特殊链接</h2>
   <FriendList list={friends[2]} />
 
-  <h2 id='apply-links'>申请友链</h2>
-  <p>本站信息（点击复制）The site information (click to copy)：</p>
-  <blockquote class='not-prose grid grid-cols-[auto_1fr] gap-x-2 break-words border-s-4 ps-4'>
-    {
-      linksConf.applyTip.map(({ name, val }) => {
-        const script = `navigator.clipboard.writeText('${val}');document.dispatchEvent(new CustomEvent('toast',{detail:{message:'Copied "${val}" to clipboard!'}}))`
-        return (
-          <>
-            <span class='text-end'>{name}:</span>
-            <samp class='cursor-pointer' onclick={script}>
-              {val}
-            </samp>
-          </>
-        )
-      })
-    }
-  </blockquote>
+  {showFriends && (
+    <>
+      <h2 id='apply-links'>申请友链</h2>
+      <p>本站信息（点击复制）The site information (click to copy)：</p>
+      <blockquote class='not-prose grid grid-cols-[auto_1fr] gap-x-2 break-words border-s-4 ps-4'>
+        {
+          linksConf.applyTip.map(({ name, val }) => {
+            const script = `navigator.clipboard.writeText('${val}');document.dispatchEvent(new CustomEvent('toast',{detail:{message:'Copied "${val}" to clipboard!'}}))`
+            return (
+              <>
+                <span class='text-end'>{name}:</span>
+                <samp class='cursor-pointer' onclick={script}>
+                  {val}
+                </samp>
+              </>
+            )
+          })
+        }
+      </blockquote>
 
-  <p>
-    申请时还请按照这个模板留言，此外有关申请说明：
-  </p>
-  <ul>
-    <li>在你的友链上添加了本站. You've recommended this site on your website.</li>
-    <li>请确保你的站点活着. Make sure your site is alive.</li>
-    <li>博客内容不违反国家法律. Content does not violate common laws.</li>
-  </ul>
+      <p>
+        申请时还请按照这个模板留言，此外有关申请说明：
+      </p>
+      <ul>
+        <li>在你的友链上添加了本站. You've recommended this site on your website.</li>
+        <li>请确保你的站点活着. Make sure your site is alive.</li>
+        <li>博客内容不违反国家法律. Content does not violate common laws.</li>
+      </ul>
+    </>
+  )}
 </PageLayout>
