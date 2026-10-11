@@ -7,7 +7,7 @@ tags:
   - 思考
 language: 中文
 heroImage:
-  src: ./covers/life-levers.png
+  src: ./thumbnail.png
   color: "#68625A"
 ---
 

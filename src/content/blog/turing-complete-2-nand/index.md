@@ -8,7 +8,7 @@ tags:
   - 数字电路
 language: 中文
 heroImage:
-  src: ./covers/turing-complete-2-nand.png
+  src: ./thumbnail.png
   color: "#917500"
 ---
 

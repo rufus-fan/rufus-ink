@@ -9,7 +9,7 @@ tags:
   - 工具设计
 language: 中文
 heroImage:
-  src: ./covers/mcp-tool-design-1.png
+  src: ./thumbnail.png
   color: "#C2410C"
 ---
 

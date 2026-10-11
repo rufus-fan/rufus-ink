@@ -9,7 +9,7 @@ tags:
   - LLM
 language: 中文
 heroImage:
-  src: ./covers/harness-engineering-4.png
+  src: ./thumbnail.png
   color: "#002FA7"
 ---
 

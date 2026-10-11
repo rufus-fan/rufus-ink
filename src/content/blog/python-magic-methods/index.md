@@ -7,7 +7,7 @@ tags:
   - 编程基础
 language: 中文
 heroImage:
-  src: ./covers/python-magic-methods.png
+  src: ./thumbnail.png
   color: "#4D7C0F"
 ---
 

@@ -10,7 +10,7 @@ tags:
   - LLM
 language: 中文
 heroImage:
-  src: ./covers/mcp-tool-design-2.png
+  src: ./thumbnail.png
   color: "#C2410C"
 ---
 
