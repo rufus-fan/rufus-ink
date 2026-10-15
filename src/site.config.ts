@@ -62,13 +62,6 @@ export const theme: ThemeUserConfig = {
     year: `© 2024 - ${new Date().getFullYear()}`,
     // year: `© 2019 - ${new Date().getFullYear()}`,
     links: [
-      // Registration link
-      {
-        title: '浙ICP备2025212685号-3',
-        link: 'https://beian.miit.gov.cn/',
-        style: 'text-sm', // Uno/TW CSS class
-        pos: 2 // position set to 2 will be appended to copyright line
-      }
       // Privacy Policy link
       // {
       //   title: 'Site Policy',
