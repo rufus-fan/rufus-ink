@@ -372,7 +372,7 @@ Obsidian 直接打开 `src/content/blog/` 编辑（仓库自带 .obsidian 配置
 5. **封面规格**：2100×900 PNG，`thumbnail.png` 放文章目录；瑞士风，系列锚点色：Harness=IKB 蓝 `#002FA7`、MCP=安全橙、图灵完备=柠檬黄、Python=柠檬绿、人生杠杆=Ink Classic 杂志风；frontmatter `heroImage.color` 用锚点色的深化版。生成工具见 9.3。
 6. **commit 风格**：极简中文（如 `chore: 功能优化与格式调整` / `格式修复` / `内容调整`）。
 
-### 5.5 现有文章清单（截至 2026-10-11）
+### 5.5 现有文章清单（截至 2026-10-17）
 
 | slug | 日期 | 系列 | 状态 |
 | --- | --- | --- | --- |
@@ -384,8 +384,10 @@ Obsidian 直接打开 `src/content/blog/` 编辑（仓库自带 .obsidian 配置
 | harness-engineering-1~4 | 2026-09-03/07/10/14 | Harness ×4 | ✅ |
 | mcp-tool-design-1~2 | 2026-09-17/21 | MCP ×2 | ✅ |
 | turing-complete-1-logic-gates / 2-nand / 3-boolean-algebra / 4-karnaugh-map | 2026-09-24/28、10-01/05 | 图灵完备 ×4 | ✅ |
+| cool-skills | 2026-10-10 | — | ✅ 收集型清单，持续更新 |
+| ai-content-production | 2026-10-15 | — | ✅ 安全橙封面（非系列） |
 | draft.md | 2025-07-03 | — | 草稿（模板占位 ⚠️T15） |
-| AI内容生产.md | 2025-07-03 | — | 草稿（「文创出海」碎片笔记 ⚠️T15） |
+| transformer | 2026-10-10 | — | 草稿 ⚠️T15 |
 
 ### 5.6 草稿机制
 
@@ -629,7 +631,7 @@ ESLint（eslint-plugin-astro + ts parser）+ Prettier（astro + import 排序插
 | T12 | 首页 `highlightColor='#659EB9'` 硬编码，与主题 primary 不一致 | `src/pages/index.astro` | 统一用 CSS 变量或移除 |
 | T13 | Sponsors（赞赏名单）整段注释停用，内含 1 条真实数据（d2be8 / Afdian / ¥5 / 2026-05-22） | `src/pages/projects/index.astro` | 决策恢复或删除 |
 | T14 | 4 个条款页为主题英文模板，未本地化 | `src/pages/terms/*.md` | 中文化 |
-| T15 | 两个草稿：`draft.md`（模板占位）、`AI内容生产.md`（「文创出海」碎片笔记，frontmatter 仍是 Draft Page 模板） | `src/content/blog/` | 整理成文或清理 |
+| T15 | 两个草稿：`draft.md`（模板占位）、`transformer/`（架构笔记，无封面） | `src/content/blog/` | 整理成文或清理（原 `AI内容生产.md` 已于 2026-10-17 发布为 `ai-content-production`） |
 | T16 | GitHub 活动图依赖第三方 ghchart.rshah.org（稳定性和隐私） | `src/pages/projects/index.astro` | 可换 GitHub 官方 contributions 或自绘 |
 | T17 | `links.cacheAvatar=false`，友链头像直链外部图床（国内加载慢/失效） | `src/site.config.ts` | 开启并跑 `bun run cache:avatars` |
 | T18 | `src/components/home/SkillLayout.astro` 未被任何页面引用 | 同左 | 删除或启用（技能展示位） |
@@ -698,3 +700,4 @@ ESLint（eslint-plugin-astro + ts parser）+ Prettier（astro + import 排序插
 | --- | --- | --- |
 | 2026-10-11 | v1.0 | 初版：全站功能与模块盘点建档（基于代码现状 + 2026-10 排版改造后的状态） |
 | 2026-10-11 | v1.1 | 页脚移除 ICP 备案展示（`footer.links` 清空）：站点托管 Vercel，配合阿里云备案核查整改 |
+| 2026-10-17 | v1.2 | 《AI 内容生产实战：视频生成 + 声音克隆》发布：`AI内容生产.md` 迁移为 `ai-content-production/`（一篇一文件夹），新增 2100×900 瑞士风封面（安全橙），frontmatter 去 Draft、日期改 2026-10-15、补 AI 速读；5.5 清单同步登记 cool-skills / transformer |
